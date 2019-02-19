@@ -19,13 +19,19 @@ class Paperboy:
 # of papers that the paperboy has delivered in the past. In this way the quota should increase after every delivery the
 # paperboy makes.
 
-    def deliver(self, start_house, end_house)
-        
+    def deliver(self, start_house, end_house):
+        self.experience = end_house - start_house
+        if self.experience < 50:
+            self.earnings = self.experience * 0.25
+        else:
+            self.earnings = self.experience * 0.50
+
 
     def quota(self):
         if self.experience < 50:
             self.earnings -= 2
 
 bob = Paperboy('Tony')
+bob.deliver(1, 60 )
 
 print(bob)
